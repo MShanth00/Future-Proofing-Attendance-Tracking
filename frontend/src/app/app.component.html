@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span>Face Recognition Attendance System</span>
+
+  <!-- Navbar with Links -->
+  <span class="spacer"></span>
+  <nav>
+    <a mat-button routerLink="/camera">Camera & Employee Details</a>
+    <a mat-button routerLink="/today-attendance">Today's Attendance</a>
+    <a mat-button routerLink="/employee-attendance">Employee Attendance</a>
+    <a mat-button routerLink="/register-employee">Register Employee</a>
+  </nav>
+</mat-toolbar>
+
+<!-- Router Outlet to Display Components Based on Route -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

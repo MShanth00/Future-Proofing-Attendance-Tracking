@@ -1,0 +1,25 @@
+<div class="camera-container">
+    <div class="camera-section">
+      <h2>Camera Feed</h2>
+      <video #video autoplay></video>
+      <br>
+      <div class="button-group">
+        <button  *ngIf="!isCameraEnabled"  mat-raised-button color="primary" (click)="enableCamera()">Enable Camera</button>
+        <button  *ngIf="isCameraEnabled"  mat-raised-button color="primary" (click)="disableCamera()">Disable Camera</button>
+        <button mat-raised-button color="accent" (click)="capture()">Capture Attendance</button>
+      </div>
+    </div>
+  
+    <mat-card *ngIf="selectedEmployee" class="employee-detail-card">
+      <mat-card-header>
+        <mat-card-title>Employee Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Name:</strong> {{ selectedEmployee.name }}</p>
+        <p><strong>Employee ID:</strong> {{ selectedEmployee.tag }}</p>
+        <p><strong>Employee Email:</strong> {{ selectedEmployee.email }}</p>
+        <p><strong>Department:</strong> {{ selectedEmployee.department }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

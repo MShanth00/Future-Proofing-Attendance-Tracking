@@ -1,42 +1,102 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>Today's Attendance of All Employees</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <table mat-table [dataSource]="todayAttendance" class="mat-elevation-z8">
-        <!-- Employee Name Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Employee ID </th>
-          <td mat-cell *matCellDef="let employee"> {{employee.employee_tag}} </td>
-        </ng-container>
+<mat-card class="attendance-card">
+  <mat-card-header>
+    <mat-card-title>📋 Today's Attendance of All Employees</mat-card-title>
+  </mat-card-header>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Employee Name </th>
-          <td mat-cell *matCellDef="let employee"> {{employee.employee_name}} </td>
-        </ng-container>
-  
-        <!-- In Time Column -->
-        <ng-container matColumnDef="inTime">
-          <th mat-header-cell *matHeaderCellDef> In Time </th>
-          <td mat-cell *matCellDef="let employee"> {{employee.checkInTime | date:'HH:mm a'}} </td>
-        </ng-container>
-  
-        <!-- Out Time Column -->
-        <ng-container matColumnDef="outTime">
-          <th mat-header-cell *matHeaderCellDef> Out Time </th>
-          <td mat-cell *matCellDef="let employee"> {{employee.checkOutTime | date:'HH:mm a'}} </td>
-        </ng-container>
+  <mat-card-content>
+    <table mat-table [dataSource]="todayAttendance" class="mat-elevation-z8 attendance-table">
+      <!-- Employee ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Employee ID</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.employee_tag }}</td>
+      </ng-container>
 
-        <!-- Status Column -->
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let employee"> {{employee.status | titlecase}} </td>
-        </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </mat-card-content>
-  </mat-card>
-  
+      <!-- Employee Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Employee Name</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.employee_name }}</td>
+      </ng-container>
+
+      <!-- In Time -->
+      <ng-container matColumnDef="inTime">
+        <th mat-header-cell *matHeaderCellDef>In Time</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.checkInTime | date:'hh:mm a' }}</td>
+      </ng-container>
+
+      <!-- Out Time -->
+      <ng-container matColumnDef="outTime">
+        <th mat-header-cell *matHeaderCellDef>Out Time</th>
+        <td mat-cell *matCellDef="let employee">{{ employee.checkOutTime | date:'hh:mm a' }}</td>
+      </ng-container>
+
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let employee">
+          <span class="status-chip" [ngClass]="{
+              'present': employee.status === 'present',
+              'absent': employee.status === 'absent',
+              'late': employee.status === 'late'
+            }">
+            {{ employee.status | titlecase }}
+          </span>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+
+<!--<mat-card class="attendance-card">-->
+<!--  <mat-card-header>-->
+<!--    <mat-card-title>📋 Today's Attendance of All Employees</mat-card-title>-->
+<!--  </mat-card-header>-->
+
+<!--  <mat-card-content>-->
+<!--    <table mat-table [dataSource]="todayAttendance" class="mat-elevation-z8 attendance-table">-->
+<!--      &lt;!&ndash; Employee ID &ndash;&gt;-->
+<!--      <ng-container matColumnDef="id">-->
+<!--        <th mat-header-cell *matHeaderCellDef>Employee ID</th>-->
+<!--        <td mat-cell *matCellDef="let employee">{{ employee.employee_tag }}</td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Employee Name &ndash;&gt;-->
+<!--      <ng-container matColumnDef="name">-->
+<!--        <th mat-header-cell *matHeaderCellDef>Employee Name</th>-->
+<!--        <td mat-cell *matCellDef="let employee">{{ employee.employee_name }}</td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; In Time &ndash;&gt;-->
+<!--      <ng-container matColumnDef="inTime">-->
+<!--        <th mat-header-cell *matHeaderCellDef>In Time</th>-->
+<!--        <td mat-cell *matCellDef="let employee">{{ employee.checkInTime | date:'hh:mm a' }}</td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Out Time &ndash;&gt;-->
+<!--      <ng-container matColumnDef="outTime">-->
+<!--        <th mat-header-cell *matHeaderCellDef>Out Time</th>-->
+<!--        <td mat-cell *matCellDef="let employee">{{ employee.checkOutTime | date:'hh:mm a' }}</td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Status &ndash;&gt;-->
+<!--      <ng-container matColumnDef="status">-->
+<!--        <th mat-header-cell *matHeaderCellDef>Status</th>-->
+<!--        <td mat-cell *matCellDef="let employee">-->
+<!--          <span class="status-chip" [ngClass]="{-->
+<!--              'present': employee.status === 'present',-->
+<!--              'absent': employee.status === 'absent',-->
+<!--              'late': employee.status === 'late'-->
+<!--            }">-->
+<!--            {{ employee.status | titlecase }}-->
+<!--          </span>-->
+<!--        </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Row definitions &ndash;&gt;-->
+<!--      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--    </table>-->
+<!--  </mat-card-content>-->
+<!--</mat-card>-->

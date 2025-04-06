@@ -1,21 +1,57 @@
-/* styles.scss */
-.spacer {
-    flex: 1 1 auto;
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.main-content {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+
+/* Toolbar styling */
+.custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background: #3f51b5;
+
+  .logo {
+    font-weight: 600;
+    font-size: 1.2rem;
   }
-  
+
   nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
     a {
       color: white;
-      text-decoration: none;
-      margin: 0 10px;
+      font-weight: 500;
+      &.active-link {
+        border-bottom: 2px solid #fff;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
-  
-    a.active {
-      border-bottom: 2px solid #fff;
+
+    a[mat-stroked-button] {
+      color: #fff;
+      border-color: #fff;
     }
   }
-  
-  .container {
-    padding: 20px;
-  }
-  
+}
+
+/* Spacer pushes nav to right */
+.spacer {
+  flex: 1 1 auto;
+}

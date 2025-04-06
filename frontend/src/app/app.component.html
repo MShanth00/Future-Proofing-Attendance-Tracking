@@ -1,17 +1,28 @@
-<mat-toolbar color="primary">
-  <span>Face Recognition Attendance System</span>
+<mat-toolbar color="primary" class="mat-elevation-z4 custom-toolbar">
+  <span class="logo">Face Recognition Attendance System</span>
 
-  <!-- Navbar with Links -->
   <span class="spacer"></span>
+
   <nav>
-    <a mat-button routerLink="/camera">Camera & Employee Details</a>
-    <a mat-button routerLink="/today-attendance">Today's Attendance</a>
-    <a mat-button routerLink="/employee-attendance">Employee Attendance</a>
-    <a mat-button routerLink="/register-employee">Register Employee</a>
+    <a mat-button routerLink="/camera" routerLinkActive="active-link">
+      <mat-icon>photo_camera</mat-icon>
+      Camera & Employee Details
+    </a>
+    <a mat-button routerLink="/today-attendance" routerLinkActive="active-link">
+      <mat-icon>event</mat-icon>
+      Today's Attendance
+    </a>
+    <a mat-button routerLink="/employee-attendance" routerLinkActive="active-link">
+      <mat-icon>assignment_ind</mat-icon>
+      Employee Attendance
+    </a>
+    <a mat-stroked-button color="accent" routerLink="/register-employee">
+      <mat-icon>person_add</mat-icon>
+      Register Employee
+    </a>
   </nav>
 </mat-toolbar>
 
-<!-- Router Outlet to Display Components Based on Route -->
-<div class="container">
+<div class="main-content">
   <router-outlet></router-outlet>
 </div>

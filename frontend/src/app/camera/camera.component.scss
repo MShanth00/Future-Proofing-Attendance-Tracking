@@ -1,50 +1,93 @@
 .camera-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-top: 20px;
-    gap: 30px; // Add some spacing between the sections
-    height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+/* Camera Section */
+.camera-section {
+  flex: 1;
+  max-width: 640px;
+  background: #f1f8ff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #3f51b5;
   }
-  
-  .camera-section {
-    flex: 1;
-    max-width: 600px;
-  }
-  
+
   video {
     width: 100%;
-    border: 3px solid #007bff;
-    border-radius: 10px;
+    height: 300px;
+    border-radius: 12px;
+    border: 2px solid #3f51b5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background: #eee;
   }
-  
+
   .button-group {
-    margin-top: 10px;
     display: flex;
-    gap: 15px; /* Add spacing between the buttons */
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
   }
-  
-  .employee-detail-card {
-    flex: 1; /* Make the employee card flexible in size */
-    max-width: 400px; /* Set a maximum width */
-    padding: 20px; /* Add some padding inside the card */
-    background-color: #f8f9fa; /* Light background color for better readability */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
-    border-radius: 10px; /* Slightly round the corners */
-    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+/* Instruction Card */
+.instruction-card {
+  flex: 1;
+  max-width: 400px;
+  background-color: #f1f8ff;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  color: #333;
+
+  mat-card-title {
+    color: #3f51b5;
+    font-size: 1.4rem;
   }
-  
-  .employee-detail-card mat-card-header {
-    border-radius: 10px 10px 0 0; /* Rounded top corners */
-    padding: 10px;
+
+  ul {
+    padding-left: 20px;
+    li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.6;
+
+      strong {
+        color: #d81b60;
+      }
+    }
   }
-  
-  .employee-detail-card p {
-    margin: 10px 0;
-    font-size: 16px;
+}
+
+/* Employee Detail Card */
+.employee-detail-card {
+  flex: 1;
+  max-width: 400px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .camera-container {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .camera-container > .employee-detail-card {
-    margin-left: 30px; /* More space between camera and employee details */
+
+  .camera-section, .instruction-card, .employee-detail-card {
+    max-width: 90%;
   }
-  
+}
